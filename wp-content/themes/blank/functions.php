@@ -159,3 +159,55 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function wpc_cpt() {
+
+	/* Property */
+	$labels = array(
+		'name'                => _x('Projects', 'Post Type General Name', 'textdomain'),
+		'singular_name'       => _x('Project', 'Post Type Singular Name', 'textdomain'),
+		'menu_name'           => __('Projects', 'textdomain'),
+		'name_admin_bar'      => __('Project', 'textdomain'),
+		'parent_item_colon'   => __('Parent Item:', 'textdomain'),
+		'all_items'           => __('All Items', 'textdomain'),
+		'add_new_item'        => __('Add New Item', 'textdomain'),
+		'add_new'             => __('Add New', 'textdomain'),
+		'new_item'            => __('New Item', 'textdomain' ),
+		'edit_item'           => __('Edit Item', 'textdomain'),
+		'update_item'         => __('Update Item', 'textdomain'),
+		'view_item'           => __('View Item', 'textdomain'),
+		'search_items'        => __('Search Item', 'textdomain'),
+		'not_found'           => __('Not found', 'textdomain'),
+		'not_found_in_trash'  => __('Not found in Trash', 'textdomain'),
+	);
+	$rewrite = array(
+		'slug'                => _x('property', 'property', 'textdomain'),
+		'with_front'          => true,
+		'pages'               => true,
+		'feeds'               => false,
+	);
+	$args = array(
+		'label'               => __('property', 'textdomain'),
+		'description'         => __('Properties', 'textdomain'),
+		'labels'              => $labels,
+		'supports'            => array('title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+		'taxonomies'          => array('property_type'),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 5,
+		'menu_icon'           => 'dashicons-admin-home',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'query_var'           => 'property',
+		'rewrite'             => $rewrite,
+		'capability_type'     => 'page',
+	);
+	register_post_type('property', $args);
+}
+
+add_action('init', 'wpc_cpt', 10);
