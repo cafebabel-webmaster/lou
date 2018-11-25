@@ -186,7 +186,7 @@ function wpc_cpt() {
 		'feeds'               => false,
 	);
 	$args = array(
-		'label'               => __('property', 'textdomain'),
+		'label'               => __('project', 'textdomain'),
 		'description'         => __('Properties', 'textdomain'),
 		'labels'              => $labels,
 		'supports'            => array('title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
